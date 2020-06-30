@@ -6,4 +6,4 @@ def f(i):
 
 
 def test_f():
-    assert f(2) == 4
+    assert f(2) == 3
