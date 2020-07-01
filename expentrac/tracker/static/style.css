@@ -1,3 +1,72 @@
-* {
-    font-family: "Comic Sans MS"
-    }
+.main_div{
+      height: 85%;
+      width: 100%;
+      align-items: center;
+      box-sizing: border-box;
+      position: absolute;
+      flex-direction: column;
+      display: flex;
+}
+
+.main_sec{
+  background-color: rgba(185, 237, 171, 0.327);
+  border-radius: 20px;
+  margin: auto;
+  width: 1100px;
+  height: auto;
+  display: block;
+  text-align: center;
+  align-content: center;
+  position: relative;
+  padding: 20px 10px 24px
+}
+
+.logo_div {
+    text-align: center;
+}
+
+.logo_div h1 {
+    color: green;
+    font-size: 42px;
+    font-family: "Comic Sans MS";
+   }
+
+.logo_div h4 {
+    color: rgba(61, 61, 61, 0.65);
+    font-size: 28px;
+    font-family: "Comic Sans MS";
+ }
+
+.work_space p {
+    color: green;
+    font-size: 34px;
+    font-family: "Bradley Hand";
+   }
+
+label {
+    font-family: "Comic Sans MS";
+    font-size: 18px;
+    color: rgba(61, 61, 61, 0.65);
+}
+
+input{
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    width: 20%;
+    padding: 10px 15px;
+    margin: 10px 5px;
+    box-sizing: border-box;
+    color: green;
+}
+
+button {
+    border : none;
+    border-radius: 10px;
+    text-align: center;
+    width: 10%;
+    color: white;
+    padding: 10px 15px;
+    margin: 10px 5px;
+    box-sizing: border-box;
+    background-color: green;
+}

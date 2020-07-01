@@ -10,13 +10,13 @@
 <body>
     <div class="main_div">
         <div class="main_sec">
-            <div>
-                <h2> Expentrac </h2>
+            <div class="logo_div">
+                <h1> Expentrac </h1>
                 <h4> Your simple expense logger </h4>
             </div>
 
             <div class="work_space">
-                <h3> {% block title %}  {% endblock title %} </h3>{# could be login, signup, track #}
+                <p> {% block title %}  {% endblock title %} </p>{# could be login, signup, track #}
                 {% block content %} {% endblock content %}
             </div>
 
