@@ -7,3 +7,7 @@ def base_page(request):
 
 def login_page(request):
     return render(request, 'tracker/login.html')
+
+
+def signup_page(request):
+    return render(request, 'tracker/signup.html')
