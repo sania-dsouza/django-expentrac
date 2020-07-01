@@ -69,4 +69,10 @@ button {
     margin: 10px 5px;
     box-sizing: border-box;
     background-color: green;
+    font-weight: bold;
 }
+
+button:hover {
+    background-color: white;
+    color: green;
+    }
