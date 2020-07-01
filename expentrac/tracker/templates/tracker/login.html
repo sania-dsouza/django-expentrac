@@ -1,7 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expentrac</title>
+    <link rel = "stylesheet" type="text/css" href="../static/style.css">
+    <link rel= "icon" href='../static/favicon.ico' type='image/x-icon'/>
+</head>
+<body>
+    {% extends "./base.html" %}  {# template inheriting from parent 'base' #}
+    {% block title %} LOGIN {% endblock title %}
 
-{% extends "base.html" %}  {# template inheriting from parent 'base' #}
+    {% block content %}
+        {# Form for logging in #}
+        <form action = "" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" id="username" placeholder="Sara">
+            <label for="username" > Username: </label>
 
-{% block content %}
-    <h2> Login to Expentrac </h2>
-    <p> More stuff </p>
-{% endblock content %}
+            <input type="password" name="password" id="password" placeholder="********">
+            <label for="password"> Password: </label>
+
+            <button type="submit">Let's go!</button>
+            <button type="button">Sign Up</button>
+
+        </form>
+    {% endblock content %}
+
+</body>
+</html>

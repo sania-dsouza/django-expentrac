@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Expentrac</title>
-    <link rel = "stylesheet" type="text/css" href="../static/base_style.css">
+    <link rel = "stylesheet" type="text/css" href="../static/style.css">
     <link rel= "icon" href='../static/favicon.ico' type='image/x-icon'/>
 </head>
 <body>
@@ -16,7 +16,7 @@
             </div>
 
             <div class="work_space">
-                {% block title %} <h3> {{ page.title|upper }} </h3> {% endblock title %} {# could be login, signup, track #}
+                <h3> {% block title %}  {% endblock title %} </h3>{# could be login, signup, track #}
                 {% block content %} {% endblock content %}
             </div>
 
