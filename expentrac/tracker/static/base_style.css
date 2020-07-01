@@ -18,7 +18,7 @@
   text-align: center;
   align-content: center;
   position: relative;
-  padding: 20px 10px 24px
+  padding: 20px 10px 24px;
 }
 
 .logo_div {
@@ -44,6 +44,9 @@
    }
 
 label {
+    display: inline-block;
+    width: 160px;
+    text-align: center;
     font-family: "Comic Sans MS";
     font-size: 18px;
     color: rgba(61, 61, 61, 0.65);
@@ -70,7 +73,7 @@ button {
     box-sizing: border-box;
     background-color: green;
     font-weight: bold;
-    cursor: pointer;ex
+    cursor: pointer;
 }
 
 button:hover {

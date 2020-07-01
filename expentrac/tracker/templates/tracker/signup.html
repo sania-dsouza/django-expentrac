@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>Expentrac</title>
+    <link rel = "stylesheet" type="text/css" href="../static/base_style.css">
+    <link rel= "icon" href='../static/favicon.ico' type='image/x-icon'/>
 </head>
 <body>
     {% extends "./base.html" %}  {# template inheriting from parent 'base' #}
@@ -10,26 +14,26 @@
         {# Form for signing up #}
         <form action = "" method="post">
             {% csrf_token %}
-            <label for="firstname" > First name </label>
-            <input type="text" name="firstname" id="firstname" placeholder="Sara">
-            </br>
-            </br>
-            <label for="lastname" > Last name </label>
-            <input type="text" name="lastname" id="lastname" placeholder="Khan">
-            </br>
-            </br>
-            <label for="username" > Username </label>
-            <input type="text" name="username" id="username" placeholder="sarakhan">
-            </br>
-            </br>
-            <label for="password"> Password </label>
-            <input type="password" name="password" id="password" placeholder="********">
-            </br>
-            </br>
-            <label for="password"> Confirm password </label>
-            <input type="password" name="password" id="cPass" placeholder="">
-            </br>
-            </br>
+            <div>
+                <label for="firstname" > First name </label>
+                <input type="text" name="firstname" id="firstname" placeholder="Sara">
+            </div>
+            <div>
+                <label for="lastname" > Last name </label>
+                <input type="text" name="lastname" id="lastname" placeholder="Khan">
+            </div>
+            <div>
+                <label for="username" > Username </label>
+                <input type="text" name="username" id="username" placeholder="sarakhan">
+            </div>
+            <div>
+                <label for="password"> Password </label>
+                <input type="password" name="password" id="password" placeholder="********">
+            </div>
+            <div>
+                <label for="password"> Confirm password </label>
+                <input type="password" name="password" id="cPass" placeholder="">
+            </div>
             </br>
             <button type="submit">Sign Up</button>
             <button type="button">Login</button>
