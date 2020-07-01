@@ -4,8 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Expentrac</title>
+    <link rel = "stylesheet" type="text/css" href="base_style.css">
 </head>
 <body>
-    {% block content %} {% endblock content %}
+    <div class="main_div">
+        <div class="main_sec">
+            <div>
+                <h2> Expentrac </h2>
+                <h4> Your simple expense logger </h4>
+            </div>
+
+            <div class="work_space">
+                {% block title %} <h3> {{ page.title|upper }} </h3> {% endblock title %} {# could be login, signup, track #}
+                {% block content %} {% endblock content %}
+            </div>
+
+        </div>
+
+
+    </div>
 </body>
 </html>
