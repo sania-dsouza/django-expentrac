@@ -1,6 +1,7 @@
 from django.urls import path
 
 from . import views
+from .models import User
 
 urlpatterns = [
     # path('', views.base_page, name='base'),

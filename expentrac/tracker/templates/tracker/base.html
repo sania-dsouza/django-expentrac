@@ -1,24 +1,26 @@
 <!-- Base template for this app and the project -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Expentrac</title>
-    <link rel = "stylesheet" type="text/css" href="../static/base_style.css">
-    <link rel= "icon" href='../static/favicon.ico' type='image/x-icon'/>
-</head>
-<body>
     {% load bootstrap4 %}
 
-    {# Load CSS and JavaScript #}
+    {# Load CSS and JavaScript #}  {# calling bootstrap before custom styles allows over-riding BS styles #}
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
+    <link rel = "stylesheet" type="text/css" href="../static/base_style.css">
+    <link rel= "icon" href='../static/favicon.ico' type='image/x-icon'/>
+
+</head>
+<body>
 
     <div class="main_div">
         <div class="main_sec">
             <div class="logo_div">
                 <h1> Expentrac </h1>
                 <h4> Your simple expense logger </h4>
+                </br>
             </div>
 
             <div class="work_space">

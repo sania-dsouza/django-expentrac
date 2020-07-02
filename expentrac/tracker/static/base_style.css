@@ -62,7 +62,7 @@ input{
     color: green;
 }
 
-button {
+#bs_ov button {
     border : none;
     border-radius: 10px;
     text-align: center;
