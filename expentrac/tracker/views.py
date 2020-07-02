@@ -11,3 +11,7 @@ def login_page(request):
 
 def signup_page(request):
     return render(request, 'tracker/signup.html')
+
+
+def tracker_page(request):
+    return render(request, 'tracker/trackerTable.html')

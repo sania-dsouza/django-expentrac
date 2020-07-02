@@ -8,6 +8,12 @@
     <link rel= "icon" href='../static/favicon.ico' type='image/x-icon'/>
 </head>
 <body>
+    {% load bootstrap4 %}
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
     <div class="main_div">
         <div class="main_sec">
             <div class="logo_div">
