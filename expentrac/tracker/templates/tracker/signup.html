@@ -11,26 +11,24 @@
         {# Form for signing up #}
         <form action = "" method="post" novalidate>
             {% csrf_token %}
-            <div>
-                <label for="firstname" > First name </label>
-                <input type="text" name="firstname" id="firstname" placeholder="Sara" required>
-            </div>
-            <div>
-                <label for="lastname" > Last name </label>
-                <input type="text" name="lastname" id="lastname" placeholder="Khan" required>
-            </div>
-            <div>
-                <label for="username" > Username </label>
-                <input type="text" name="username" id="username" placeholder="sarakhan" required>
-            </div>
-            <div>
-                <label for="password"> Password </label>
-                <input type="password" name="password" id="password" placeholder="********" required>
-            </div>
-            <div>
-                <label for="password"> Confirm password </label>
-                <input type="password" name="password" id="cPass" placeholder="" required>
-            </div>
+            <label for="id_first_name">First name</label>
+            {{ form.first_name }}
+            </br>
+            <label for="id_last_name">Last name</label>
+            {{ form.first_name }}
+            </br>
+            <label for="id_email">Email</label>
+            {{ form.email }}
+            </br>
+            <label for="id_username">Username</label>
+            {{ form.username }}
+            </br>
+            <label for="id_password">Password</label>
+            {{ form.password }}
+            </br>
+            <label for="id_cPassword">Confirm password</label>
+            {{ form.cPassword }}
+            </br>
             </br>
             <button type="submit">Sign Up</button>
             <a href="/"><button type="button" >Login</button></a>

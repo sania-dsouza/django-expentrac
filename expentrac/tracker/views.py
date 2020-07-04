@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import Tracker
-from .forms import LoginForm
+from .forms import LoginForm, SignUpForm
 
 
 def base_page(request):
@@ -21,7 +21,14 @@ def login_page(request):
 
 
 def signup_page(request):
-    return render(request, 'tracker/signup.html')
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/')
+    else:
+        form = SignUpForm()
+
+    return render(request, 'tracker/signup.html', {'form': form})
 
 
 def tracker_page(request):
