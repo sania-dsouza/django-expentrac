@@ -13,23 +13,23 @@
             {% csrf_token %}
             <div>
                 <label for="firstname" > First name </label>
-                <input type="text" name="firstname" id="firstname" placeholder="Sara">
+                <input type="text" name="firstname" id="firstname" placeholder="Sara" required>
             </div>
             <div>
                 <label for="lastname" > Last name </label>
-                <input type="text" name="lastname" id="lastname" placeholder="Khan">
+                <input type="text" name="lastname" id="lastname" placeholder="Khan" required>
             </div>
             <div>
                 <label for="username" > Username </label>
-                <input type="text" name="username" id="username" placeholder="sarakhan">
+                <input type="text" name="username" id="username" placeholder="sarakhan" required>
             </div>
             <div>
                 <label for="password"> Password </label>
-                <input type="password" name="password" id="password" placeholder="********">
+                <input type="password" name="password" id="password" placeholder="********" required>
             </div>
             <div>
                 <label for="password"> Confirm password </label>
-                <input type="password" name="password" id="cPass" placeholder="">
+                <input type="password" name="password" id="cPass" placeholder="" required>
             </div>
             </br>
             <button type="submit">Sign Up</button>
