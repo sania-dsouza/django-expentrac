@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 </head>
 <body>
@@ -8,16 +8,13 @@
 
     {% block content %}
         {# Form for logging in #}
-        <form action = "" method="post">
+        <form class="needs-validation" action = "" method="post" novalidate>
             {% csrf_token %}
-
-            <div>
-            <label for="username" > Username </label>
-            <input type="text" name="username" id="username" placeholder="Sara" required>
-            </div>
-            <div>
-            <label for="password"> Password </label>
-            <input type="password" name="password" id="password" placeholder="********" required>
+            <label for="id_username">Username</label>
+            {{ form.username }}
+            </br>
+            <label for="id_password">Password</label>
+            {{ form.password }}
             </div>
             </br>
             <button type="submit">Let's go!</button>
