@@ -131,4 +131,23 @@ p.dropdown-item:hover{
     margin-right: 120px;
 }
 
+table th {
+    color: green;
+    }
+
+a{
+    color: black;
+}
+
+a#tracker_controls1:hover {
+    color: green;
+    }
+
+a#tracker_controls2:hover {
+    color: red;
+    }
+
+
+
+
 
