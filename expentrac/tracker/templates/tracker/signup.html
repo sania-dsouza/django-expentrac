@@ -29,22 +29,22 @@
         {# Form for signing up #}
         <form action = "" method="POST" novalidate>
             {% csrf_token %}
-            <label for="id_first_name">First name</label>
+            <label for="id_first_name" class="required">First name</label>
             {{ form.first_name }}
             </br>
-            <label for="id_last_name">Last name</label>
+            <label for="id_last_name" class="required">Last name</label>
             {{ form.last_name }}
             </br>
-            <label for="id_email">Email</label>
+            <label for="id_email" class="required">Email</label>
             {{ form.email }}
             </br>
-            <label for="id_username">Username</label>
+            <label for="id_username" class="required">Username</label>
             {{ form.username }}
             </br>
-            <label for="id_password">Password</label>
+            <label for="id_password" class="required">Password</label>
             {{ form.password }}
             </br>
-            <label for="id_cPassword">Confirm password</label>
+            <label for="id_cPassword" class="required">Confirm password</label>
             {{ form.cPassword }}
             </br>
             </br>

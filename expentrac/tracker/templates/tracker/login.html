@@ -27,11 +27,11 @@
         {# Form for logging in #}
         <form action = "" method="POST" novalidate>
             {% csrf_token %}
-            <label for="id_username">Username</label>
+            <label for="id_username" class="required">Username</label>
             {{ form.username }}
             </br>
 
-            <label for="id_password">Password</label>
+            <label for="id_password" class="required">Password</label>
             {{ form.password }}
             </div>
             </br>

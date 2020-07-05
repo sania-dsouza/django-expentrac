@@ -75,6 +75,11 @@ input{
     color: green;
 }
 
+.required:after {
+    content:"*";
+    color: red;
+  }
+
 button {
     border : none;
     border-radius: 10px;
