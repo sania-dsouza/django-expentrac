@@ -15,12 +15,12 @@
             {% for field in form %}
                 {% if field.errors %}
                     {% for err in field.errors %}
-                        <div class="err">{{ field.label }}:{{ err }}</div>
+                        {% if field.help_text %}
+                            <div class="err">{{ field.label }}: {{ err }} ( {{ field.help_text|safe }} )</div>
+                        {% else %}
+                            <div class="err">{{ field.label }}: {{ err }} </div>
+                        {% endif %}
                     {% endfor %}
-                {% endif %}
-
-                {% if field.help_text %}
-                    <p class="help">{{ field.help_text|safe }}</p>
                 {% endif %}
             {% endfor %}
         </div>

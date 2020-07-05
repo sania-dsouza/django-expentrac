@@ -12,9 +12,13 @@
 
         <div class="fieldWrapper">
             {% for field in form %}
-                {% if field.errors and field.help_text %}
+                {% if field.errors %}
                     {% for err in field.errors %}
-                        <div class="err">{{ field.label }}: {{ err }} ( {{ field.help_text|safe }} )</div>
+                        {% if field.help_text %}
+                            <div class="err">{{ field.label }}: {{ err }} ( {{ field.help_text|safe }} )</div>
+                        {% else %}
+                            <div class="err">{{ field.label }}: {{ err }} </div>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
             {% endfor %}
