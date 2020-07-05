@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Expentrac</title>
-    {% load bootstrap4 %}
 
+    {% load bootstrap4 %}
     {# Load CSS and JavaScript #}  {# calling bootstrap before custom styles allows over-riding BS styles #}
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
-
-    <link rel = "stylesheet" type="text/css" href="../static/base_style.css">
+    {% load static %}
+    <link rel = "stylesheet" type="text/css" href="../static/style.css">
     <link rel= "icon" href='../static/favicon.ico' type='image/x-icon'/>
 
 </head>
@@ -25,7 +25,7 @@
             </div>
 
             <div class="work_space">
-                <p> {% block title %}  {% endblock title %} </p>{# could be login, signup, track #}
+                <p class="page_title"> {% block title %}  {% endblock title %} </p>{# could be login, signup, track #}
                 {% block content %} {% endblock content %}
             </div>
 

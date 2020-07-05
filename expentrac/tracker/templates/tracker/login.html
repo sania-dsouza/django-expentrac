@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
+    {% extends "./base.html" %}  {# template inheriting from parent 'base' #}
 </head>
 <body>
-    {% extends "./base.html" %}  {# template inheriting from parent 'base' #}
+
     {% block title %} LOGIN {% endblock title %}
 
     {% block content %}
+        {# Get the errors on the form, and display before the form starts #}
+
+        <div class="fieldWrapper">
+            {% for field in form %}
+                {% if field.errors %}
+                    {% for err in field.errors %}
+                        <div class="err">{{ field.label }}:{{ err }}</div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        </br>
         {# Form for logging in #}
-        <form class="needs-validation" action = "" method="post" novalidate>
+        <form action = "" method="POST" novalidate>
             {% csrf_token %}
             <label for="id_username">Username</label>
             {{ form.username }}
             </br>
+
             <label for="id_password">Password</label>
             {{ form.password }}
             </div>

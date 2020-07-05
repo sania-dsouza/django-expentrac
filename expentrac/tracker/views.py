@@ -25,6 +25,7 @@ def signup_page(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             return HttpResponseRedirect('/')
+
     else:
         form = SignUpForm()
 

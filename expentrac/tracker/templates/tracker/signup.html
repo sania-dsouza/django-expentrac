@@ -1,21 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    {% extends "./base.html" %}  {# template inheriting from parent 'base' #}
 </head>
 <body>
-    {% extends "./base.html" %}  {# template inheriting from parent 'base' #}
+
     {% block title %} SIGN UP {% endblock title %}
 
     {% block content %}
+
+        {# Get the errors on the form, and display before the form starts #}
+
+        <div class="fieldWrapper">
+            {% for field in form %}
+                {% if field.errors %}
+                    {% for err in field.errors %}
+                        <div class="err">{{ field.label }}:{{ err }}</div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        </br>
+
         {# Form for signing up #}
-        <form action = "" method="post" novalidate>
+        <form action = "" method="POST" novalidate>
             {% csrf_token %}
             <label for="id_first_name">First name</label>
             {{ form.first_name }}
             </br>
             <label for="id_last_name">Last name</label>
-            {{ form.first_name }}
+            {{ form.last_name }}
             </br>
             <label for="id_email">Email</label>
             {{ form.email }}

@@ -37,11 +37,24 @@
     font-family: "Comic Sans MS";
  }
 
-.work_space p {
+.work_space p.page_title {
     color: green;
     font-size: 34px;
     font-family: "Bradley Hand";
    }
+
+.fieldWrapper {
+    font-family: "Arial";
+    background-color: rgba(214, 148, 148, 0.5);
+    color: red;
+    border-radius: 10px;
+    font-size: 14px;
+    margin: auto;
+    width: 35%;
+    display: block;
+    position: relative;
+    align-content: center;
+    }
 
 label {
     display: inline-block;
@@ -112,3 +125,5 @@ p.dropdown-item:hover{
     float: right;
     margin-right: 120px;
 }
+
+
