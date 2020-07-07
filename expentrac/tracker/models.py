@@ -26,7 +26,7 @@ class Tracker(models.Model):
         ("EDU", "Education"),
         ("MISC", "Miscellaneous"),
     ]
-    date = models.DateField('Date expense incurred', auto_now_add=False, blank=True, null=True)   # saved in format yyyy-mm-dd
+    date = models.DateField('Date of expense', auto_now_add=False, blank=True, null=True)   # saved in format yyyy-mm-dd
     item = models.CharField(max_length=100, null=False, blank=False)
     category = models.CharField(max_length=4, choices=CATEGORY_CHOICES, null=True, blank=True)
     amount = models.FloatField(null=False, blank=False)

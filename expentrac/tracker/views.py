@@ -39,9 +39,15 @@ def tracker_page(request):
 
 
 class TrackerRowCreate(BSModalCreateView):
-    template_name = 'tracker/tracker_row.html'
+    template_name = 'tracker/tracker_row_create.html'
     form_class = TrackerRowForm
     success_message = 'Success: Expense created.'
+
+
+class TrackerRowEdit(BSModalCreateView):
+    template_name = 'tracker/tracker_row_edit.html'
+    form_class = TrackerRowForm
+    success_message = 'Success: Expense modified.'
 
 
 
