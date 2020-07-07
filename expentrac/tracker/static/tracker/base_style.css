@@ -159,6 +159,10 @@ button#create-expense:hover {
     background-color: white;
     }
 
+i {
+    cursor : pointer;
+}
+
 /*! ----------- Start of modal formatting --------------*/
 
 div.modal-body {
@@ -192,6 +196,8 @@ div.modal-footer button {
     border: solid green;
     width: 20%;
 }
+
+/*! ----------- End of modal formatting --------------*/
 
 
 
