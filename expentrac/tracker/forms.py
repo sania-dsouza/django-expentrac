@@ -1,4 +1,6 @@
 from django import forms
+from .models import Tracker
+from bootstrap_modal_forms.forms import BSModalModelForm
 
 
 class LoginForm(forms.Form):
@@ -23,6 +25,13 @@ class SignUpForm(forms.Form):
             raise forms.ValidationError("Passwords do not match")
 
         return self.cleaned_data
+
+
+class TrackerRowForm(BSModalModelForm):
+    class Meta:
+        model = Tracker
+        fields = ['date', 'item', 'category', 'amount', 'notes']
+
 
 
 

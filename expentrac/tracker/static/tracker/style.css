@@ -139,11 +139,11 @@ a{
     color: black;
 }
 
-a#tracker_controls1:hover {
+a.tracker_controls1:hover {
     color: green;
     }
 
-a#tracker_controls2:hover {
+a.tracker_controls2:hover {
     color: red;
     }
 

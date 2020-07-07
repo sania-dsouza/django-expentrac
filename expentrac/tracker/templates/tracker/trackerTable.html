@@ -1,12 +1,16 @@
+{% extends "./base.html" %} {# template inheriting from parent 'base' #}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% extends "./base.html" %}  {# template inheriting from parent 'base' #}
 </head>
 <body>
+    {% load static %}
+    <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 
     {% block title %} EXPENSES {% endblock title %}
+
     {% block content %}
+    {% include "./_modal.html" %}
 
     <div class="filt_container">
         <div class="dropdown">
@@ -36,6 +40,9 @@
         </div>
     </div>
     </br>
+    </br>
+    <!-- Create book button -->
+    <button id="create-expense" class="btn btn-primary" type="button" name="button">Create expense</button>
 
     <table class="table table-striped">
         <thead>
@@ -58,8 +65,8 @@
               <td>1.35</td>
               <td>Hungry me!</td>
               <td>1.35</td>
-              <td> <a href = "" id="tracker_controls1" ><i class="fa fa-pencil" title="Edit"></i></a></td>
-              <td> <a href = "" id="tracker_controls2" ><i class="fa fa-times" title="Delete"></i></a></td>
+              <td> <a href = "" class="tracker_controls1" ><i class="fa fa-pencil" title="Edit"></i></a></td>
+              <td> <a href = "" class="tracker_controls2" ><i class="fa fa-times" title="Delete"></i></a></td>
         </tr>
         <tr>
               <th scope="row">2</th>
@@ -69,14 +76,37 @@
               <td>1.29</td>
               <td>Thirsty me!</td>
               <td>2.64</td>
-              <td> <a href = "" id="tracker_controls1" ><i class="fa fa-pencil" title="Edit"></i></a></td>
-              <td> <a href = "" id="tracker_controls2" ><i class="fa fa-times" title="Delete"></i></a></td>
+              <td> <a href = "" class="tracker_controls1" ><i class="fa fa-pencil" title="Edit"></i></a></td>
+              <td> <a href = "" class="tracker_controls2" ><i class="fa fa-times" title="Delete"></i></a></td>
         </tr>
         <tr>
 
         </tr>
       </tbody>
     </table>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                {% block modal %} {% endblock modal %}
+            </div>
+        </div>
+    </div>
+
     {% endblock content %}
+
+    {% block extrascripts %}
+
+    <script type="text/javascript">
+    $(function () {
+        $("#create-expense").modalForm({
+            formURL: "{% url 'tracker_row' %}",
+            modalID: "#create-modal"
+          });
+      });
+    </script>
+
+    {% endblock extrascripts %}
+
 </body>
 </html>

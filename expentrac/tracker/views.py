@@ -1,7 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import Tracker
-from .forms import LoginForm, SignUpForm
+from .forms import LoginForm, SignUpForm, TrackerRowForm
+from bootstrap_modal_forms.generic import BSModalCreateView
 
 
 def base_page(request):
@@ -35,6 +36,15 @@ def signup_page(request):
 def tracker_page(request):
     categories = [verb_cat for code, verb_cat in Tracker.CATEGORY_CHOICES];
     return render(request, 'tracker/trackerTable.html', {'categories': categories})
+
+
+class TrackerRowCreate(BSModalCreateView):
+    template_name = 'tracker/tracker_row.html'
+    form_class = TrackerRowForm
+    success_message = 'Success: Expense created.'
+
+
+
 
 
 
