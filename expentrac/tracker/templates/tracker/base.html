@@ -1,4 +1,5 @@
 <!-- Base template for this app and the project -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -9,9 +10,8 @@
     {# Load CSS and JavaScript #}  {# calling bootstrap before custom styles allows over-riding BS styles #}
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
-
     <script src="https://use.fontawesome.com/cf29dc4996.js"></script>
-    {% load static %}
+
 
     <link rel = "stylesheet" type="text/css" href="../static/tracker/style.css">
     <link rel= "icon" href='../static/tracker/favicon.ico' type='image/x-icon'/>
@@ -35,9 +35,9 @@
         </div>
     </div>
 
-    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'assets/js/popper.min.js' %}"></script>
-    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<!--    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>-->
+<!--    <script src="{% static 'assets/js/popper.min.js' %}"></script>-->
+<!--    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>-->
     <!-- You can alternatively load the minified version -->
     <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 

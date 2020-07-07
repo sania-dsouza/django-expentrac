@@ -42,7 +42,7 @@
     </br>
     </br>
     <!-- Create book button -->
-    <button id="create-expense" class="btn btn-primary" type="button" name="button">Create expense</button>
+    <button id="create-expense" class="btn" type="button" name="button">Create expense</button>
 
     <table class="table table-striped">
         <thead>
@@ -84,14 +84,6 @@
         </tr>
       </tbody>
     </table>
-
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                {% block modal %} {% endblock modal %}
-            </div>
-        </div>
-    </div>
 
     {% endblock content %}
 
