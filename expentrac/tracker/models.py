@@ -26,11 +26,11 @@ class Tracker(models.Model):
         ("EDU", "Education"),
         ("MISC", "Miscellaneous"),
     ]
-    date = models.DateField('Date expense incurred', auto_now_add=False)   # saved in format yyyy-mm-dd
-    item = models.CharField(max_length=100)
-    category = models.CharField(max_length=4, choices=CATEGORY_CHOICES, null=True)
-    amount = models.FloatField()
-    notes = models.CharField(max_length=200, null=True)
+    date = models.DateField('Date expense incurred', auto_now_add=False, blank=True, null=True)   # saved in format yyyy-mm-dd
+    item = models.CharField(max_length=100, null=False, blank=False)
+    category = models.CharField(max_length=4, choices=CATEGORY_CHOICES, null=True, blank=True)
+    amount = models.FloatField(null=False, blank=False)
+    notes = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return str(self.user.id)

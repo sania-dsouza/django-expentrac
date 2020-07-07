@@ -147,10 +147,51 @@ a.tracker_controls2:hover {
     color: red;
     }
 
+button#create-expense{
+    background-color: green;
+    font-family: "Comic Sans MS";
+    color: white;
+    width: 200px;
+}
+
+button#create-expense:hover {
+    color: green;
+    background-color: white;
+    }
+
+/*! ----------- Start of modal formatting --------------*/
+
+div.modal-body {
+    text-align: left;
+    }
+
+button.close:hover {
+    color: red;
+}
+
+div.form-group label {
+    text-align:left;
+    width: 200px;
+    float: left;
+    }
+
+div.form-group .form-control {
+    color: green;
+}
+
+div.form-group p {
+    color: red;
+}
+
 h3.modal-title {
     color: green;
     font-family: "Comic Sans MS";
-    }
+}
+
+div.modal-footer button {
+    border: solid green;
+    width: 20%;
+}
 
 
 
