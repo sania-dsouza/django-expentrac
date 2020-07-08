@@ -139,13 +139,13 @@ a{
     color: black;
 }
 
-a.tracker_controls1:hover {
+i.edit-expense:hover {
     color: green;
     }
 
-a.tracker_controls2:hover {
-    color: red;
-    }
+i.del-expense:hover {
+    color:red;
+}
 
 button#create-expense{
     background-color: green;
