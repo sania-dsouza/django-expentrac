@@ -5,6 +5,7 @@ from .forms import LoginForm, SignUpForm, TrackerRowForm
 from bootstrap_modal_forms.generic import BSModalCreateView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 def base_page(request):
@@ -67,7 +68,7 @@ class TrackerRowEdit(BSModalCreateView):
 
 def logout_view(request):
     logout(request)
-    # messages.info(request, "Logged out successfully!")
+    messages.info(request, "Logged out successfully!")
     return HttpResponseRedirect('/')  # return to login page upon logout
 
 
