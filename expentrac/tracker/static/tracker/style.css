@@ -99,6 +99,17 @@ button:hover {
     color: green;
     }
 
+.logout {
+    color: gray;
+    float: right;
+    margin: 0 20px;
+    font-size: 24px;
+}
+
+.logout:hover {
+    color: green;
+}
+
 div.filt_container {
     position: relative;
     }
