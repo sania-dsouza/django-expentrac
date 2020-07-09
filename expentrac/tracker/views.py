@@ -4,6 +4,7 @@ from .models import Tracker
 from .forms import LoginForm, SignUpForm, TrackerRowForm
 from bootstrap_modal_forms.generic import BSModalCreateView
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 
 
 def base_page(request):
@@ -33,6 +34,12 @@ def signup_page(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            email = request.POST['email']
+            fname = request.POST['first_name']
+            lname = request.POST['last_name']
+            user = User.objects.create_user(username=username, email=email, password = password, first_name = fname, last_name=lname)
             return HttpResponseRedirect('/')
 
     else:
