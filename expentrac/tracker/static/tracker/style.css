@@ -56,6 +56,11 @@
     align-content: center;
     }
 
+.messages {
+    color: green;
+    background-color: lightgreen;
+}
+
 label {
     display: inline-block;
     width: 160px;
