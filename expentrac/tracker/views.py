@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import Tracker
 from .forms import LoginForm, SignUpForm, TrackerRowForm
 from bootstrap_modal_forms.generic import BSModalCreateView
+from django.contrib.auth import authenticate, login, logout
 
 
 def base_page(request):
@@ -13,7 +14,14 @@ def login_page(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect('/')
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/tracker')  # pointing to the generic tracker page currently
+            else:
+                return HttpResponseRedirect('/')
 
     else:
         form = LoginForm()
