@@ -65,6 +65,12 @@ class TrackerRowEdit(BSModalCreateView):
     success_message = 'Success: Expense modified.'
 
 
+def logout_view(request):
+    logout(request)
+    # messages.info(request, "Logged out successfully!")
+    return HttpResponseRedirect('/')  # return to login page upon logout
+
+
 
 
 

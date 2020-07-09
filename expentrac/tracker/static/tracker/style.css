@@ -99,14 +99,14 @@ button:hover {
     color: green;
     }
 
-.logout {
+i#logout {
     color: gray;
     float: right;
     margin: 0 20px;
     font-size: 24px;
 }
 
-.logout:hover {
+i#logout:hover {
     color: green;
 }
 
