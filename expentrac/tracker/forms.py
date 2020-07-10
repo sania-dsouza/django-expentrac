@@ -1,5 +1,5 @@
 from django import forms
-from .models import Tracker
+from .models import Expense
 from bootstrap_modal_forms.forms import BSModalModelForm
 
 
@@ -29,7 +29,7 @@ class SignUpForm(forms.Form):
 
 class TrackerRowForm(BSModalModelForm):
     class Meta:
-        model = Tracker
+        model = Expense
         fields = ['date', 'item', 'category', 'amount', 'notes']
 
 

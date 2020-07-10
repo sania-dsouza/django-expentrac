@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import Tracker
+from .models import Expense
 from .forms import LoginForm, SignUpForm, TrackerRowForm
 from bootstrap_modal_forms.generic import BSModalCreateView
 from django.contrib.auth import authenticate, login, logout
@@ -52,8 +52,8 @@ def signup_page(request):
 
 
 def tracker_page(request):
-    categories = [verb_cat for code, verb_cat in Tracker.CATEGORY_CHOICES]
-    data = Tracker.objects.all()
+    categories = [verb_cat for code, verb_cat in Expense.CATEGORY_CHOICES]
+    data = Expense.objects.all()
 
     return render(request, 'tracker/trackerTable.html', {'categories': categories, 'object_list': data})
 
@@ -68,13 +68,13 @@ def create_expense_entry(request):
     if request.method == "POST":
         form = TrackerRowForm(request.POST)
         if form.is_valid():
-            # user = User.objects.get(pk=2)
+            # user = request.user.id
             date = request.POST['date']
             item = request.POST['item']
             category = request.POST['category']
             amount = request.POST['amount']
             notes = request.POST['notes']
-            Tracker.objects.get_or_create(date=date, item=item, category=category, amount=amount, notes=notes)
+            Expense.objects.get_or_create(date=date, item=item, category=category, amount=amount, notes=notes)
             # print("Submitting form for exp entry")
             return HttpResponseRedirect(reverse('tracker'))
     else:

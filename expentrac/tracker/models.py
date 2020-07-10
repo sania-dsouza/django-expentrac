@@ -1,21 +1,21 @@
 from django.db import models
-
+from django.conf import settings
 # Create your models here.
 
 
-class User(models.Model):
-    username = models.CharField(max_length=15, default="", null=False)
-    first_name = models.CharField(max_length=20, default="", null=False)
-    last_name = models.CharField(max_length=30, default="", null=False)
-    email = models.EmailField(max_length=60, default="", null=False)
-    password = models.CharField(max_length=12, default="", null=False)
+# class User(models.Model):
+#     username = models.CharField(max_length=15, default="", null=False)
+#     first_name = models.CharField(max_length=20, default="", null=False)
+#     last_name = models.CharField(max_length=30, default="", null=False)
+#     email = models.EmailField(max_length=60, default="", null=False)
+#     password = models.CharField(max_length=12, default="", null=False)
+#
+#     def __str__(self):
+#         return self.first_name+" " +self.last_name
 
-    def __str__(self):
-        return self.first_name+" " +self.last_name
 
-
-class Tracker(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+class Expense(models.Model):
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL, default=0, on_delete=models.CASCADE)
     CATEGORY_CHOICES = [
         ("CLO", "Clothing"),
         ("FOOD", "Food"),
