@@ -68,13 +68,13 @@ def create_expense_entry(request):
     if request.method == "POST":
         form = TrackerRowForm(request.POST)
         if form.is_valid():
-            # user = request.user.id
+            user = request.user   # get the user authenticated currently and mark expense against that user
             date = request.POST['date']
             item = request.POST['item']
             category = request.POST['category']
             amount = request.POST['amount']
             notes = request.POST['notes']
-            Expense.objects.get_or_create(date=date, item=item, category=category, amount=amount, notes=notes)
+            Expense.objects.get_or_create(user=user, date=date, item=item, category=category, amount=amount, notes=notes)
             # print("Submitting form for exp entry")
             return HttpResponseRedirect(reverse('tracker'))
     else:
