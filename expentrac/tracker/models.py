@@ -15,7 +15,7 @@ from django.conf import settings
 
 
 class Expense(models.Model):
-    # user = models.ForeignKey(settings.AUTH_USER_MODEL, default=0, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=0, on_delete=models.CASCADE)
     CATEGORY_CHOICES = [
         ("CLO", "Clothing"),
         ("FOOD", "Food"),
@@ -32,8 +32,8 @@ class Expense(models.Model):
     amount = models.FloatField(null=False, blank=False)
     notes = models.CharField(max_length=200, null=True, blank=True)
 
-    # def __str__(self):
-    #     return str(self.user)
+    def __str__(self):
+        return str(self.id)    # return expense id to the table on the django admin
 
 
 
