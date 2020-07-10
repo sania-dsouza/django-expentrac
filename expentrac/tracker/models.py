@@ -11,11 +11,11 @@ class User(models.Model):
     password = models.CharField(max_length=12, default="", null=False)
 
     def __str__(self):
-        return self.first_name+self.last_name
+        return self.first_name+" " +self.last_name
 
 
 class Tracker(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     CATEGORY_CHOICES = [
         ("CLO", "Clothing"),
         ("FOOD", "Food"),
@@ -32,8 +32,8 @@ class Tracker(models.Model):
     amount = models.FloatField(null=False, blank=False)
     notes = models.CharField(max_length=200, null=True, blank=True)
 
-    def __str__(self):
-        return str(self.user.id)
+    # def __str__(self):
+    #     return str(self.user)
 
 
 

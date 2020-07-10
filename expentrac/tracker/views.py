@@ -1,5 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
+
 from .models import Tracker
 from .forms import LoginForm, SignUpForm, TrackerRowForm
 from bootstrap_modal_forms.generic import BSModalCreateView
@@ -50,7 +52,7 @@ def signup_page(request):
 
 
 def tracker_page(request):
-    categories = [verb_cat for code, verb_cat in Tracker.CATEGORY_CHOICES];
+    categories = [verb_cat for code, verb_cat in Tracker.CATEGORY_CHOICES]
     return render(request, 'tracker/trackerTable.html', {'categories': categories})
 
 
@@ -58,6 +60,24 @@ class TrackerRowCreate(BSModalCreateView):
     template_name = 'tracker/tracker_row_create.html'
     form_class = TrackerRowForm
     success_message = 'Success: Expense created.'
+
+
+def create_expense_entry(request):
+    if request.method == "POST":
+        form = TrackerRowForm(request.POST)
+        if form.is_valid():
+            # user = User.objects.get(pk=2)
+            date = request.POST['date']
+            item = request.POST['item']
+            category = request.POST['category']
+            amount = request.POST['amount']
+            notes = request.POST['notes']
+            Tracker.objects.get_or_create(date=date, item=item, category=category, amount=amount, notes=notes)
+            # print("Submitting form for exp entry")
+            return HttpResponseRedirect(reverse('tracker'))
+    else:
+        form = TrackerRowForm()
+    return render(request, 'tracker/tracker_row_create.html', {'form': form})
 
 
 class TrackerRowEdit(BSModalCreateView):
