@@ -53,7 +53,9 @@ def signup_page(request):
 
 def tracker_page(request):
     categories = [verb_cat for code, verb_cat in Tracker.CATEGORY_CHOICES]
-    return render(request, 'tracker/trackerTable.html', {'categories': categories})
+    data = Tracker.objects.all()
+
+    return render(request, 'tracker/trackerTable.html', {'categories': categories, 'object_list': data})
 
 
 class TrackerRowCreate(BSModalCreateView):
