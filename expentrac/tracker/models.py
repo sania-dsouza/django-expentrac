@@ -17,18 +17,18 @@ from django.conf import settings
 class Expense(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=0, on_delete=models.CASCADE)
     CATEGORY_CHOICES = [
-        ("CLO", "Clothing"),
-        ("FOOD", "Food"),
-        ("FUEL", "Fuel"),
-        ("RENT", "Rent"),
-        ("UTI", "Utilities"),
-        ("PHN", "Phone"),
-        ("EDU", "Education"),
-        ("MISC", "Miscellaneous"),
+        ("Clothing", "Clothing"),
+        ("Food", "Food"),
+        ("Fuel", "Fuel"),
+        ("Rent", "Rent"),
+        ("Utilities", "Utilities"),
+        ("Phone", "Phone"),
+        ("Education", "Education"),
+        ("Miscellaneous", "Miscellaneous"),
     ]
     date = models.DateField('Date of expense', blank=True, null=True)   # saved in format yyyy-mm-dd
     item = models.CharField(max_length=100, null=False, blank=False)
-    category = models.CharField(max_length=4, choices=CATEGORY_CHOICES, null=True, blank=True)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, null=True, blank=True)
     amount = models.FloatField(null=False, blank=False)
     notes = models.CharField(max_length=200, null=True, blank=True)
 
