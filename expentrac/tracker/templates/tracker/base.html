@@ -7,13 +7,13 @@
     <title>Expentrac</title>
 
     {% load bootstrap4 %}
-    {# Load CSS and JavaScript #}  {# calling bootstrap before custom styles allows over-riding BS styles #}
-    {% bootstrap_css %}
+    {% bootstrap_css %} {# calling bootstrap before custom styles allows over-riding BS styles #}
     {% bootstrap_javascript jquery='full' %}
     <script src="https://use.fontawesome.com/cf29dc4996.js"></script>
+    <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 
 
-    <link rel = "stylesheet" type="text/css" href="../static/tracker/style.css">
+    <link rel = "stylesheet" type="text/css" href="../static/tracker/base_style.css">
     <link rel= "icon" href='../static/tracker/favicon1.ico' type='image/x-icon'/>
 
 </head>
@@ -36,7 +36,7 @@
     </div>
 
 
-    <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+
 
     {% block extrascripts %}{% endblock extrascripts %}
 </body>

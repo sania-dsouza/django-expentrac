@@ -78,10 +78,11 @@ def create_expense_entry(request):
             amount = request.POST['amount']
             notes = request.POST['notes']
             Expense.objects.get_or_create(user=user, date=date, item=item, category=category, amount=amount, notes=notes)
-            # print("Submitting form for exp entry")
+            print("Submitting form for exp entry")
             return HttpResponseRedirect(reverse('tracker', args=(user.username,)))
     else:
         form = TrackerRowForm()
+
     return render(request, 'tracker/tracker_row_create.html', {'form': form})
 
 

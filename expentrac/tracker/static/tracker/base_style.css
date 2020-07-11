@@ -85,6 +85,10 @@ input{
     color: red;
   }
 
+p.help-block {
+    color: yellow;
+}
+
 button {
     border : none;
     border-radius: 10px;

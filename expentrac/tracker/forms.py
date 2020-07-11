@@ -1,4 +1,6 @@
 from django import forms
+from django.forms import DateInput
+
 from .models import Expense
 from bootstrap_modal_forms.forms import BSModalModelForm
 
@@ -31,6 +33,9 @@ class TrackerRowForm(BSModalModelForm):
     class Meta:
         model = Expense
         fields = ['date', 'item', 'category', 'amount', 'notes']
+        widgets = {
+            'date': DateInput(format='%m/%d/%Y', attrs={'type': 'date'}),
+        }
 
 
 

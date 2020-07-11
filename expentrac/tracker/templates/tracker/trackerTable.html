@@ -2,12 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
-    {% load tracker_extra %}
+
 </head>
 <br>
-
-
     {% block title %} EXPENSES {% endblock title %}
 
     {% block content %}
@@ -100,13 +97,13 @@
     </script>
 
     <script>
-
         $('.del-expense').on('click', function() {
             return confirm("Are you sure you want to delete this expense?");
         });
-
-
     </script>
+
+
+
 
     {% endblock extrascripts %}
 

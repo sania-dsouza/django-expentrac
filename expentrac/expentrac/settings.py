@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -125,5 +126,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'tracker/static/tracker'),
 )
 STATIC_URL = '/static/'
+
+
 
 
