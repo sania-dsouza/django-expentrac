@@ -12,11 +12,11 @@
 
         <div class="fieldWrapper">
             {% if messages %}
-                <div class="messages">
-                    {% for message in messages %}
-                        {{ message }}
-                    {% endfor %}
-                </div>
+                {% for message in messages %}
+                    <div class="{{ message.tags }}">
+                            {{ message }}
+                        {% endfor %}
+                    </div>
             {% endif %}
 
             {% for field in form %}

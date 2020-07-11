@@ -28,6 +28,7 @@ def login_page(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse('tracker', args=(request.user.username,)))  # pointing to the generic tracker page currently
             else:
+                messages.error(request, "Username and password didn't match.")
                 return HttpResponseRedirect('/')
 
     else:

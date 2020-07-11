@@ -56,9 +56,14 @@
     align-content: center;
     }
 
-.messages {
+.fieldWrapper .info {
     color: green;
     background-color: lightgreen;
+}
+
+.fieldWrapper .error {
+    color: red;
+    background-color: rgba(214, 148, 148, 0.5);
 }
 
 label {
