@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
+    <script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>
 </head>
 <br>
     {% block title %} EXPENSES {% endblock title %}
@@ -28,17 +29,12 @@
 
 
         <div>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle category" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Category
-                </button>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    {% for cate in categories %}
-                        <p class="dropdown-item">{{ cate }}</p>
-                    {% endfor %}
-                </div>
-            </div>
+            <select id="category_filter" onchange="cate_function('category')" class='form-control'>
+                <option selected >All</option>
+                {% for cate in categories %}
+                    <option> {{ cate }} </option>
+                {% endfor %}
+            </select>
         </div>
     </div>
     </br>
@@ -47,7 +43,7 @@
     <button id="create-expense" class="btn" type="button" name="button">Create expense</button>
     </br>
     </br>
-    <table class="table table-striped">
+    <table id="table" class="table table-striped">
         <thead>
         <tr>
             <th scope="col">S.No</th>
@@ -93,6 +89,7 @@
             formURL: "{% url 'tracker_row_edit' %}",
             modalID: "#edit-modal"
         });
+
       });
     </script>
 
@@ -102,6 +99,51 @@
         });
     </script>
 
+    <script>
+        function myFunction() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("mylist");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+    </script>
+
+    <script>
+    function cate_function(col) {
+      var input, filter, table, tr, td, i, c;
+      input = document.getElementById("category_filter");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("table");
+      tr = table.getElementsByTagName("tr");
+      if (col == "category"){ c = 2; }
+      else { c = 1; }
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[c];
+        if (td) {
+            if (filter == "ALL"){   // When no filter is applied
+                tr[i].style.display = "";
+            }else{
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+        }
+      }
+    }
+    </script>
 
 
 
