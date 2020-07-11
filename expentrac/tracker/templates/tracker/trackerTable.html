@@ -16,20 +16,17 @@
     </br>
     </br>
     <div class="filt_container">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle month" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Month
-            </button>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <p class="dropdown-item">June 2020</p>
-                <p class="dropdown-item">July 2020</p>
-            </div>
+        <div>
+            <select id="month_filter" onchange="filt_function('month')" class='form-control'>
+                <option selected >All time</option>
+                <option> June 2020 </option>
+                <option> July 2020 </option>
+            </select>
         </div>
 
 
         <div>
-            <select id="category_filter" onchange="cate_function('category')" class='form-control'>
+            <select id="category_filter" onchange="filt_function('category')" class='form-control'>
                 <option selected >All</option>
                 {% for cate in categories %}
                     <option> {{ cate }} </option>
@@ -120,7 +117,7 @@
     </script>
 
     <script>
-    function cate_function(col) {
+    function filt_function(col) {
       var input, filter, table, tr, td, i, c;
       input = document.getElementById("category_filter");
       filter = input.value.toUpperCase();
