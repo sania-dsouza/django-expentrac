@@ -1,6 +1,9 @@
+from django import shortcuts
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.template import RequestContext
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 from .models import Expense
 from .forms import LoginForm, SignUpForm, TrackerRowForm
@@ -23,7 +26,7 @@ def login_page(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect('/tracker')  # pointing to the generic tracker page currently
+                return HttpResponseRedirect(reverse('tracker', args=(request.user.username,)))  # pointing to the generic tracker page currently
             else:
                 return HttpResponseRedirect('/')
 
@@ -51,11 +54,11 @@ def signup_page(request):
     return render(request, 'tracker/signup.html', {'form': form})
 
 
-def tracker_page(request):
+def tracker_page(request, username):
     categories = [verb_cat for code, verb_cat in Expense.CATEGORY_CHOICES]
-    data = Expense.objects.all()
+    data = Expense.objects.filter(user=User.objects.get(username=username))
 
-    return render(request, 'tracker/trackerTable.html', {'categories': categories, 'object_list': data})
+    return shortcuts.render(request, 'tracker/trackerTable.html', {'categories': categories, 'object_list': data})
 
 
 class TrackerRowCreate(BSModalCreateView):
@@ -76,7 +79,7 @@ def create_expense_entry(request):
             notes = request.POST['notes']
             Expense.objects.get_or_create(user=user, date=date, item=item, category=category, amount=amount, notes=notes)
             # print("Submitting form for exp entry")
-            return HttpResponseRedirect(reverse('tracker'))
+            return HttpResponseRedirect(reverse('tracker', args=(user.username,)))
     else:
         form = TrackerRowForm()
     return render(request, 'tracker/tracker_row_create.html', {'form': form})
