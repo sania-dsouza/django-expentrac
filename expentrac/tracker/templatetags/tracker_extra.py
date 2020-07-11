@@ -19,5 +19,7 @@ def index(obj_list, i):
 
 
 @register.filter
-def get_attr(ele, field):
-    return ele.field
+def get_attr(obj_list, ele, field):
+    return index(obj_list, ele).field
+
+

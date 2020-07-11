@@ -65,17 +65,14 @@
 
       <tbody>
 
-      {% get_count object_list as total %}
-        {% for i in total %}
-        {% add_index i as j %}
-
+      {% for tracker in object_list %}
             <tr>
-                <th scope="row">{{ j }}</th>
-                <td>{{ object_list.0.date }}</td>
-                <td>{{ object_list.0.item }}</td>
-                <td>{{ object_list.0.category }}</td>
-                <td>{{ object_list.0.amount }}</td>
-                <td>{{ object_list.0.notes }}</td>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ tracker.date }}</td>
+                <td>{{ tracker.item }}</td>
+                <td>{{ tracker.category }}</td>
+                <td>{{ tracker.amount }}</td>
+                <td>{{ tracker.notes }}</td>
                 <td>3.90</td>
                 <td> <a class="tracker_controls1" id="c"><i class="fa fa-pencil edit-expense" title="Edit"></i></a></td>
                 <td> <a class="tracker_controls2" id="d"><i class="fa fa-times del-expense" title="Delete"></i></a></td>
