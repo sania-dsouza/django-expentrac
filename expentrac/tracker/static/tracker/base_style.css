@@ -175,6 +175,11 @@ button#create-expense:hover {
     background-color: white;
     }
 
+button.submit-btn {
+    border-radius: 10px;
+    font-family: "Comic Sans MS";
+}
+
 i {
     cursor : pointer;
 }
