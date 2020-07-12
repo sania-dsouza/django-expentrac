@@ -12,7 +12,7 @@ def validate_number(pswd):
 
 
 def validate_specialchar(pswd):
-    if re.search('[$&+,:;=?@#|<>.-^*()%!]', pswd) is None:
+    if re.search('[$&+,:;=?@#|<>.^*()%!]', pswd) is None:
         raise ValidationError(
             _('Must have at least one special character.')
         )

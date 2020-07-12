@@ -48,10 +48,10 @@ def signup_page(request):
                 email = request.POST['email']
                 fname = request.POST['first_name']
                 lname = request.POST['last_name']
-                user = User.objects.create_user(username=username, email=email, password = password, first_name = fname, last_name=lname)
+                user = User.objects.create_user(username=username, email=email, password=password, first_name=fname, last_name=lname)
                 return HttpResponseRedirect('/')
         except IntegrityError as e:
-            messages.error(request, "Username has been used before.")
+            messages.error(request, "Username already exists.")
             return render(request, 'tracker/signup.html', {'form': form})
 
     else:
