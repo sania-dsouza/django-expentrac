@@ -17,7 +17,7 @@
     </br>
     <div class="filt_container">
         <div class="select-div month">
-            <select id="month_filter" onchange="filt_function('month')" class='form-control'>
+            <select id="month_filter" onchange="filt_function('month')" class='form-control1'>
                 <option style="background-color: green;color: white;">All time</option>
                 <option> June 2020 </option>
                 <option> July 2020 </option>
@@ -26,8 +26,8 @@
 
 
         <div class="select-div category">
-            <select id="category_filter" onchange="filt_function('category')" class='form-control'>
-                <option selected >All</option>
+            <select id="category_filter" onchange="filt_function('category')" class='form-control1'>
+                <option selected >All expenses</option>
                 {% for cate in categories %}
                     <option> {{ cate }} </option>
                 {% endfor %}
@@ -111,7 +111,7 @@
           for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[c];
             if (td) {
-                if (filter == "ALL") {   // With no filter applied
+                if (filter == "ALL EXPENSES") {   // With no filter applied
                     el.style.display = "none";
                     tr[i].style.display = "";
                 }
@@ -127,7 +127,7 @@
                 }
             }
           }
-          if (!count & filter != "ALL") {
+          if (!count & filter != "ALL EXPENSES") {
             el.style.display = "";
            }
         }
