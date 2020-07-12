@@ -54,20 +54,22 @@
       </thead>
 
       <tbody>
-
-      {% for tracker in object_list %}
-            <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ tracker.date }}</td>
-                <td>{{ tracker.item }}</td>
-                <td>{{ tracker.category }}</td>
-                <td>{{ tracker.amount }}</td>
-                <td>{{ tracker.notes }}</td>
-                <td>3.90</td>
-                <td> <a class="tracker_controls1" id="c"><i class="fa fa-pencil edit-expense" title="Edit"></i></a></td>
-                <td> <a class="tracker_controls2" id="d"><i class="fa fa-times del-expense" title="Delete"></i></a></td>
+          {% for tracker in object_list %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ tracker.date }}</td>
+                    <td>{{ tracker.item }}</td>
+                    <td>{{ tracker.category }}</td>
+                    <td>{{ tracker.amount }}</td>
+                    <td>{{ tracker.notes }}</td>
+                    <td>3.90</td>
+                    <td> <a class="tracker_controls1" id="c"><i class="fa fa-pencil edit-expense" title="Edit"></i></a></td>
+                    <td> <a class="tracker_controls2" id="d"><i class="fa fa-times del-expense" title="Delete"></i></a></td>
+                </tr>
+            {% endfor %}
+            <tr id="no_records" style="display: none;">
+                <td colspan="7"> No records found </td>
             </tr>
-        {% endfor %}
       </tbody>
     </table>
 
@@ -97,52 +99,39 @@
     </script>
 
     <script>
-        function myFunction() {
-          var input, filter, table, tr, td, i;
-          input = document.getElementById("mylist");
+        function filt_function(col) {
+          var input, filter, table, tr, td, i, c, el, count=0;
+          input = document.getElementById("category_filter");
           filter = input.value.toUpperCase();
-          table = document.getElementById("myTable");
+          table = document.getElementById("table");
           tr = table.getElementsByTagName("tr");
+          var el = document.getElementById("no_records");
+          if (col == "category"){ c = 2; }
+          else { c = 1; }
           for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
+            td = tr[i].getElementsByTagName("td")[c];
             if (td) {
-              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
+                if (filter == "ALL") {   // With no filter applied
+                    el.style.display = "none";
+                    tr[i].style.display = "";
+                }
+
+                else{
+                  if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    el.style.display = "none";
+                    count++;
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }
             }
           }
+          if (!count & filter != "ALL") {
+            el.style.display = "";
+           }
         }
     </script>
-
-    <script>
-    function filt_function(col) {
-      var input, filter, table, tr, td, i, c;
-      input = document.getElementById("category_filter");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("table");
-      tr = table.getElementsByTagName("tr");
-      if (col == "category"){ c = 2; }
-      else { c = 1; }
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[c];
-        if (td) {
-            if (filter == "ALL"){   // When no filter is applied
-                tr[i].style.display = "";
-            }else{
-              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }
-        }
-      }
-    }
-    </script>
-
-
 
     {% endblock extrascripts %}
 
