@@ -166,6 +166,10 @@ table th {
     color: green;
     }
 
+table tr#no_records {
+    color: gray;
+}
+
 a{
     color: black;
 }
