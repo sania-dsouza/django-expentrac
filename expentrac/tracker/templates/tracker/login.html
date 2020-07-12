@@ -11,13 +11,15 @@
         {# Get the errors on the form, and display before the form starts #}
 
         <div class="fieldWrapper">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="{{ message.tags }}">
-                            {{ message }}
-                        {% endfor %}
-                    </div>
-            {% endif %}
+            <div id="message_div">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="{{ message.tags }}">
+                                {{ message }}
+                            {% endfor %}
+                        </div>
+                {% endif %}
+            </div>
 
             {% for field in form %}
                 {% if field.errors %}
@@ -48,6 +50,7 @@
 
         </form>
     {% endblock content %}
+
 
 </body>
 </html>
