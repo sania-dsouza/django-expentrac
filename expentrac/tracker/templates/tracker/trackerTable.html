@@ -16,16 +16,16 @@
     </br>
     </br>
     <div class="filt_container">
-        <div>
+        <div class="select-div month">
             <select id="month_filter" onchange="filt_function('month')" class='form-control'>
-                <option selected >All time</option>
+                <option style="background-color: green;color: white;">All time</option>
                 <option> June 2020 </option>
                 <option> July 2020 </option>
             </select>
         </div>
 
 
-        <div>
+        <div class="select-div category">
             <select id="category_filter" onchange="filt_function('category')" class='form-control'>
                 <option selected >All</option>
                 {% for cate in categories %}

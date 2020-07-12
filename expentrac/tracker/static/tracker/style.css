@@ -128,23 +128,29 @@ div.filt_container {
     position: relative;
     }
 
-#dropdownMenuButton {
+.select-div {
     position: relative;
-    background-color: gray;
     width: 20%;
+    font-family: "Comic Sans MS";
+    border-radius: 20px;
+}
+
+.form-control {
+    color: white;
+    background-color: gray;
+    font-size: 16px;
     font-family: "Comic Sans MS";
 }
 
-p.dropdown-item{
+.form-control:hover {
     color: gray;
-    font-size: 20px;
-    font-family: "Comic Sans MS";
-    }
+    background-color: white;
+}
 
-p.dropdown-item:hover{
-    color: white;
-    background-color: green;
-    }
+.form-control:focus {
+    color: gray;
+    background-color: white;
+}
 
 .month {
     float: left;
