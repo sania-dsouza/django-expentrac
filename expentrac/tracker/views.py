@@ -65,8 +65,10 @@ def signup_page(request):
 def tracker_page(request, username):
     categories = [verb_cat for code, verb_cat in Expense.CATEGORY_CHOICES]
     data = Expense.objects.filter(user=User.objects.get(username=username))
-
-    return shortcuts.render(request, 'tracker/trackerTable.html', {'categories': categories, 'object_list': data})
+    if request.user.username == username:   # if the user changes the URL unwittingly or otherwise to that of another user, the page would require a login
+        return shortcuts.render(request, 'tracker/trackerTable.html', {'categories': categories, 'object_list': data})
+    else:
+        return HttpResponseRedirect('/')
 
 
 @login_required()
