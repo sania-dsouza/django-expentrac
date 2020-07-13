@@ -12,6 +12,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
 
 
 def base_page(request):
@@ -60,6 +61,7 @@ def signup_page(request):
     return render(request, 'tracker/signup.html', {'form': form})
 
 
+@login_required(login_url="/")
 def tracker_page(request, username):
     categories = [verb_cat for code, verb_cat in Expense.CATEGORY_CHOICES]
     data = Expense.objects.filter(user=User.objects.get(username=username))
@@ -67,12 +69,14 @@ def tracker_page(request, username):
     return shortcuts.render(request, 'tracker/trackerTable.html', {'categories': categories, 'object_list': data})
 
 
+@login_required(login_url="/")
 class TrackerRowCreate(BSModalCreateView):
     template_name = 'tracker/tracker_row_create.html'
     form_class = TrackerRowForm
     success_message = 'Success: Expense created.'
 
 
+@login_required(login_url="/")
 def create_expense_entry(request):
     if request.method == "POST":
         form = TrackerRowForm(request.POST)
@@ -98,6 +102,7 @@ class TrackerRowEdit(BSModalCreateView):
     success_message = 'Success: Expense modified.'
 
 
+@login_required(login_url="/")
 def logout_view(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
