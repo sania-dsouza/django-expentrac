@@ -103,7 +103,7 @@ button {
     padding: 10px 15px;
     margin: 10px 5px;
     box-sizing: border-box;
-    background-color: purple;
+    background-color: green;
     font-weight: bold;
     cursor: pointer;
 }
@@ -208,7 +208,6 @@ div.res_errors {
     color: gray;
     }
 
-/*! ----------- Start of modal formatting --------------*/
 
 div.modal-body {
     text-align: left;
@@ -242,7 +241,7 @@ div.modal-footer button {
     width: 20%;
 }
 
-/*! ----------- End of modal formatting --------------*/
+
 
 
 

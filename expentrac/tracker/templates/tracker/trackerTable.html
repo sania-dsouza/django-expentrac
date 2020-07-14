@@ -1,11 +1,11 @@
 {% extends "./base.html" %} {# template inheriting from parent 'base' #}
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
     <script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>
 </head>
-<br>
+
+<body onload="onpageload();">
+
     {% block title %} EXPENSES {% endblock title %}
 
     {% block content %}
@@ -105,7 +105,7 @@
           filter = input.value.toUpperCase();
           table = document.getElementById("table");
           tr = table.getElementsByTagName("tr");
-          var el = document.getElementById("no_records");
+          el = document.getElementById("no_records");
           if (col == "category"){ c = 2; }
           else { c = 1; }
           for (i = 0; i < tr.length; i++) {

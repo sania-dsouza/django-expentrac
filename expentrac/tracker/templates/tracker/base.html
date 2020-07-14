@@ -1,11 +1,10 @@
-<!-- Base template for this app and the project -->
-{% load static %}
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Expentrac</title>
 
+    {% load static %}
     {% load bootstrap4 %}
     {% bootstrap_css %} {# calling bootstrap before custom styles allows over-riding BS styles #}
     {% bootstrap_javascript jquery='full' %}
@@ -17,11 +16,22 @@
         }, 3000);
     </script>
 
-    <link rel = "stylesheet" type="text/css" href="../static/tracker/style.css">
+    <script>
+        function onpageload() {
+            var el, tr;
+            tr = table.getElementsByTagName("tr");
+            el = document.getElementById("no_records");
+            if (tr.length == 2) {  // check if there are more than two table rows (if there is any data)
+                el.style.display = "";
+                }
+        }
+    </script>
+
+    <link rel = "stylesheet" type="text/css" href="../static/tracker/base_style.css">
     <link rel= "icon" href='../static/tracker/favicon1.ico' type='image/x-icon'/>
 
 </head>
-<body>
+<body onload="onpageload();">
 
     <div class="main_div">
         <div class="main_sec">
