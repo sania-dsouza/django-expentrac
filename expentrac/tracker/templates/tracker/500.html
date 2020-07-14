@@ -7,10 +7,11 @@
 </head>
 <body>
     {% block content %}
-    <div class="res_errors">
-        <h3> Couldn't find that page! </h3>
-    {% endblock content %}
+    <div class="res_errors" style="color: gray;">
+        <h3> Couldn't find that resource! </h3>
+        <h4> Check the URL </h4>
     </div>
+    {% endblock content %}
 
 </body>
 </html>

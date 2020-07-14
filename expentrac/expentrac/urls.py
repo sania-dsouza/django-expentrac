@@ -8,3 +8,5 @@ urlpatterns = [
 ]
 
 handler404 = 'tracker.views.page_not_found'
+
+handler500 = 'tracker.views.no_resource'

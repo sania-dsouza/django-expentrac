@@ -204,8 +204,8 @@ i {
     cursor : pointer;
 }
 
-button#404_error {
-    width: 100px;
+div.res_errors {
+    color: gray;
     }
 
 /*! ----------- Start of modal formatting --------------*/

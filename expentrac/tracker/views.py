@@ -112,9 +112,14 @@ def logout_view(request):
 
 
 def page_not_found(request, exception):
-    if request.user:
-
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
     return shortcuts.render(request, 'tracker/404.html')
+
+def no_resource(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+    return shortcuts.render(request, 'tracker/500.html')
 
 
 
