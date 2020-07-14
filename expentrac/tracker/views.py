@@ -111,6 +111,11 @@ def logout_view(request):
     return HttpResponseRedirect('/')  # return to login page upon logout
 
 
+def page_not_found(request, exception):
+    if request.user:
+
+    return shortcuts.render(request, 'tracker/404.html')
+
 
 
 

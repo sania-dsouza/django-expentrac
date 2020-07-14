@@ -103,7 +103,7 @@ button {
     padding: 10px 15px;
     margin: 10px 5px;
     box-sizing: border-box;
-    background-color: green;
+    background-color: purple;
     font-weight: bold;
     cursor: pointer;
 }
@@ -203,6 +203,10 @@ button.submit-btn {
 i {
     cursor : pointer;
 }
+
+button#404_error {
+    width: 100px;
+    }
 
 /*! ----------- Start of modal formatting --------------*/
 
