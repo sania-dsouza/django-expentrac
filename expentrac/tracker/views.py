@@ -124,8 +124,7 @@ class TrackerRowEdit(BSModalCreateView):
 
 @login_required()
 def logout_view(request):
-    time.sleep(2
-               )
+    time.sleep(2)
     logout(request)
     messages.info(request, "Logged out successfully!")
     return HttpResponseRedirect('/')  # return to login page upon logout
