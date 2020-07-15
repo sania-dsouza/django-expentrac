@@ -103,11 +103,13 @@
         function filt_function_category() {
           var input, filter, table, tr, td, i, c, el, count=0;
           input = document.getElementById("category_filter");
+          //input1 = document.getElementsByClassName("no_display");
           filter = input.value.toUpperCase();
           table = document.getElementById("table");
           tr = table.getElementsByTagName("tr");
           el = document.getElementById("no_records");
           for (i = 0; i < tr.length; i++) {
+            //if (tr[i] in input1) { continue; }
             td = tr[i].getElementsByTagName("td")[2];
             if (td) {
                 if (filter == "ALL EXPENSES") {   // With no filter applied
@@ -122,6 +124,7 @@
                     count++;
                   } else {
                     tr[i].style.display = "none";
+                    //tr[i].className = "no_display";
                   }
                 }
             }
@@ -136,17 +139,18 @@
         function filt_function_month() {
           var input, filter, table, tr, td, i, c, el, count=0;
           input = document.getElementById("month_filter");
+          //input2 = document.getElementsByClassName("no_display");
           filter = input.value.slice(0,3);
           table = document.getElementById("table");
           tr = table.getElementsByTagName("tr");
           el = document.getElementById("no_records");
           for (i = 0; i < tr.length; i++) {
+            //if (tr[i] in input2) { continue; }
             td = tr[i].getElementsByTagName("td")[0];
             if (td) {
                 if (filter == "All") {   // With no filter applied
                     tr[i].style.display = "";
                     el.style.display = "none";
-                    console.log("Inside the ALL time filter condition");
                 }
 
                 else{
@@ -156,6 +160,7 @@
                     count++;
                   } else {
                     tr[i].style.display = "none";
+                    //tr[i].className = "no_display";
                   }
                 }
             }

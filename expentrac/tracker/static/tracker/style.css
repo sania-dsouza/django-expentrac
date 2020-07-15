@@ -175,6 +175,10 @@ a{
     color: black;
 }
 
+.no_display {
+    display: none;
+}
+
 i.edit-expense:hover {
     color: green;
     }
