@@ -1,3 +1,5 @@
+import time
+
 from django import shortcuts
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -122,6 +124,8 @@ class TrackerRowEdit(BSModalCreateView):
 
 @login_required()
 def logout_view(request):
+    time.sleep(2
+               )
     logout(request)
     messages.info(request, "Logged out successfully!")
     return HttpResponseRedirect('/')  # return to login page upon logout
