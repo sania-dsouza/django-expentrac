@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.template import RequestContext
 from django.urls import reverse
 from django.contrib.auth.models import User
+import calendar
 
 from .models import Expense
 from .forms import LoginForm, SignUpForm, TrackerRowForm
@@ -13,6 +14,14 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
+
+
+def get_month(date):
+    return calendar.month_name[date.month]
+
+
+def get_year(date):
+    return date.year
 
 
 def base_page(request):
@@ -63,10 +72,17 @@ def signup_page(request):
 
 @login_required()
 def tracker_page(request, username):
+    month_year = []
     categories = [verb_cat for code, verb_cat in Expense.CATEGORY_CHOICES]
     data = Expense.objects.filter(user=User.objects.get(username=username))
+    for exp_item in data:  # get the month and year of each exp item and append to the list
+        m = get_month(exp_item.date)
+        y = get_year(exp_item.date)
+        month_year.append(str(m)+" "+str(y))
+    month_year = set(month_year)  # remove duplicates
+
     if request.user.username == username:   # if the user changes the URL unwittingly or otherwise to that of another user, the page would require a login
-        return shortcuts.render(request, 'tracker/trackerTable.html', {'categories': categories, 'object_list': data})
+        return shortcuts.render(request, 'tracker/trackerTable.html', {'categories': categories, 'month_year': month_year, 'object_list': data})
     else:
         return HttpResponseRedirect('/')
 
@@ -90,7 +106,7 @@ def create_expense_entry(request):
             amount = request.POST['amount']
             notes = request.POST['notes']
             Expense.objects.get_or_create(user=user, date=date, item=item, category=category, amount=amount, notes=notes)
-            print("Submitting form for exp entry")
+            # print("Submitting form for exp entry")
             return HttpResponseRedirect(reverse('tracker', args=(user.username,)))
     else:
         form = TrackerRowForm()
@@ -111,12 +127,13 @@ def logout_view(request):
     return HttpResponseRedirect('/')  # return to login page upon logout
 
 
-def page_not_found(request, exception):
+def page_not_found(request, exception):    # 404 page view
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
     return shortcuts.render(request, 'tracker/404.html')
 
-def no_resource(request):
+
+def no_resource(request):     # 500 page view
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
     return shortcuts.render(request, 'tracker/500.html')

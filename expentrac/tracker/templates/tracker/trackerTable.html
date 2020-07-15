@@ -17,16 +17,17 @@
     </br>
     <div class="filt_container">
         <div class="select-div month">
-            <select id="month_filter" onchange="filt_function('month')" class='form-control1'>
-                <option style="background-color: green;color: white;">All time</option>
-                <option> June 2020 </option>
-                <option> July 2020 </option>
+            <select id="month_filter" onchange="filt_function_month()" class='form-control1'>
+                <option selected> All time </option>
+                {% for m_y in month_year %}
+                    <option> {{ m_y }} </option>
+                {% endfor %}
             </select>
         </div>
 
 
         <div class="select-div category">
-            <select id="category_filter" onchange="filt_function('category')" class='form-control1'>
+            <select id="category_filter" onchange="filt_function_category()" class='form-control1'>
                 <option selected >All expenses</option>
                 {% for cate in categories %}
                     <option> {{ cate }} </option>
@@ -99,17 +100,15 @@
     </script>
 
     <script>
-        function filt_function(col) {
+        function filt_function_category() {
           var input, filter, table, tr, td, i, c, el, count=0;
           input = document.getElementById("category_filter");
           filter = input.value.toUpperCase();
           table = document.getElementById("table");
           tr = table.getElementsByTagName("tr");
           el = document.getElementById("no_records");
-          if (col == "category"){ c = 2; }
-          else { c = 1; }
           for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[c];
+            td = tr[i].getElementsByTagName("td")[2];
             if (td) {
                 if (filter == "ALL EXPENSES") {   // With no filter applied
                     el.style.display = "none";
@@ -128,6 +127,39 @@
             }
           }
           if (!count & filter != "ALL EXPENSES") {
+            el.style.display = "";
+           }
+        }
+    </script>
+
+    <script>
+        function filt_function_month() {
+          var input, filter, table, tr, td, i, c, el, count=0;
+          input = document.getElementById("month_filter");
+          filter = input.value.slice(0,3);
+          table = document.getElementById("table");
+          tr = table.getElementsByTagName("tr");
+          el = document.getElementById("no_records");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (filter == "All time") {   // With no filter applied
+                    el.style.display = "none";
+                    tr[i].style.display = "";
+                }
+
+                else{
+                  if (td.innerHTML.indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    el.style.display = "none";
+                    count++;
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }
+            }
+          }
+          if (!count & filter != "All time") {
             el.style.display = "";
            }
         }
