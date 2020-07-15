@@ -143,9 +143,10 @@
           for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[0];
             if (td) {
-                if (filter == "All time") {   // With no filter applied
-                    el.style.display = "none";
+                if (filter == "All") {   // With no filter applied
                     tr[i].style.display = "";
+                    el.style.display = "none";
+                    console.log("Inside the ALL time filter condition");
                 }
 
                 else{
@@ -159,7 +160,7 @@
                 }
             }
           }
-          if (!count & filter != "All time") {
+          if (!count & filter != "All") {
             el.style.display = "";
            }
         }
