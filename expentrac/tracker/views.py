@@ -38,6 +38,7 @@ def login_page(request):
             password = request.POST['password']
             user = authenticate(request, username=username, password=password)
             if user is not None:
+                time.sleep(2);
                 login(request, user)
                 return HttpResponseRedirect(reverse('tracker', args=(request.user.username,)))  # pointing to the generic tracker page currently
             else:
