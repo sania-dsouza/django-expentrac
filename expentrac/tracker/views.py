@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.template import RequestContext
 from django.urls import reverse
 from django.contrib.auth.models import User
-import calendar
+import calendar, datetime
 
 from .models import Expense
 from .forms import LoginForm, SignUpForm, TrackerRowForm
@@ -40,7 +40,7 @@ def login_page(request):
             if user is not None:
                 time.sleep(2)
                 login(request, user)
-                return HttpResponseRedirect(reverse('tracker', args=(request.user.username,)))  # pointing to the generic tracker page currently
+                return HttpResponseRedirect(reverse('tracker', args=(request.user.username,)))
             else:
                 messages.error(request, "Username and password didn't match.")
                 return HttpResponseRedirect('/')
@@ -120,8 +120,30 @@ def create_expense_entry(request):
 class TrackerRowEdit(BSModalCreateView):
     template_name = 'tracker/tracker_row_edit.html'
     form_class = TrackerRowForm
-    success_message = 'Success: Expense modified.'
+    # success_message = 'Success: Expense modified.'
 
+
+@login_required()
+def edit_expense_entry(request):
+    current_exp=Expense.objects.get(pk=16)
+    variables = {'form': TrackerRowForm(instance=current_exp)}
+    return render(request, 'tracker/tracker_row_edit.html', variables)
+    # if request.method == "POST":
+    #     form = TrackerRowForm(request.POST)
+    #     if form.is_valid():
+    #         user = request.user   # get the user authenticated currently and mark expense against that user
+    #         date = request.POST['date']
+    #         item = request.POST['item']
+    #         category = request.POST['category']
+    #         amount = request.POST['amount']
+    #         notes = request.POST['notes']
+    #         Expense.objects.get_or_create(user=user, date=date, item=item, category=category, amount=amount, notes=notes)
+    #         # print("Submitting form for exp entry")
+    #         return HttpResponseRedirect(reverse('tracker', args=(user.username,)))
+    # else:
+    #     form = TrackerRowForm()
+    #
+    # return render(request, 'tracker/tracker_row_edit.html', {'form': form})
 
 @login_required()
 def logout_view(request):

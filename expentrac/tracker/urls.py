@@ -10,7 +10,7 @@ urlpatterns = [
     path('tracker/<username>', views.tracker_page, name='tracker'),
     # path('tracker', views.tracker_page, name='tracker'),
     path('create/', views.create_expense_entry, name='tracker_row_create'),
-    path('edit/', views.TrackerRowEdit.as_view(), name='tracker_row_edit'),
+    path('edit/', views.edit_expense_entry, name='tracker_row_edit'),
     path('logout/', views.logout_view, name='logout_view'),
 ]
 
