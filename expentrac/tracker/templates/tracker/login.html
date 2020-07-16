@@ -22,9 +22,9 @@
                 {% if field.errors %}
                     {% for err in field.errors %}
                         {% if field.help_text %}
-                            <div class="err">{{ field.label }}: {{ err }} ( {{ field.help_text|safe }} )</div>
+                            <div class="err">{{ field.label }}: {{ err }} ( {{ field.help_text|safe }} ) Also case-sensitive.</div>
                         {% else %}
-                            <div class="err">{{ field.label }}: {{ err }} </div>
+                            <div class="err">{{ field.label }}: {{ err }} Also case-sensitive.</div>
                         {% endif %}
                     {% endfor %}
                 {% endif %}
