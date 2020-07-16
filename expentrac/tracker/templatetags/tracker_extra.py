@@ -1,3 +1,5 @@
+from urllib.parse import urlencode
+
 from django import template
 
 register = template.Library()
@@ -22,4 +24,11 @@ def index(obj_list, i):
 def get_attr(obj_list, ele, field):
     return index(obj_list, ele).field
 
+
+@register.simple_tag
+def urlparams(*_, **kwargs):
+    safe_args = {k:v for k, v in kwargs.items() if v is not None}
+    if safe_args:
+        return '?{}'.format(urlencode(safe_args))
+    return ''
 

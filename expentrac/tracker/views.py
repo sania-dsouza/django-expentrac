@@ -8,6 +8,8 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 import calendar, datetime
 
+from django.views import generic
+
 from .models import Expense
 from .forms import LoginForm, SignUpForm, TrackerRowForm
 from bootstrap_modal_forms.generic import BSModalCreateView
@@ -124,8 +126,8 @@ class TrackerRowEdit(BSModalCreateView):
 
 
 @login_required()
-def edit_expense_entry(request):
-    current_exp=Expense.objects.get(pk=16)
+def edit_expense_entry(request, id):
+    current_exp = Expense.objects.get(pk=id)
     variables = {'form': TrackerRowForm(instance=current_exp)}
     return render(request, 'tracker/tracker_row_edit.html', variables)
     # if request.method == "POST":

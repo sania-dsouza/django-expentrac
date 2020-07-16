@@ -1,4 +1,5 @@
 {% extends "./base.html" %} {# template inheriting from parent 'base' #}
+
 <head>
     <link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
     <script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>
@@ -56,7 +57,7 @@
 
       <tbody>
           {% for tracker in object_list %}
-                <tr>
+                <tr id={{ tracker.id }}>
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ tracker.date }}</td>
                     <td>{{ tracker.item }}</td>
@@ -64,7 +65,7 @@
                     <td>{{ tracker.amount }}</td>
                     <td>{{ tracker.notes }}</td>
                     <td>3.90</td>
-                    <td> <a class="tracker_controls1" id="c"><i class="fa fa-pencil edit-expense" title="Edit"></i></a></td>
+                    <td> <a class="tracker_controls1" id="c"><i class="fa fa-pencil edit-expense " title="Edit" data-form-url="{% url 'tracker_row_edit' tracker.id %}"></i></a></td>
                     <td> <a class="tracker_controls2" id="d"><i class="fa fa-times del-expense" title="Delete"></i></a></td>
                 </tr>
             {% endfor %}
@@ -78,6 +79,10 @@
 
     {% block extrascripts %}
 
+    <script>
+
+    </script>
+
     <script type="text/javascript">
     $(function () {
         $("#create-expense").modalForm({
@@ -85,12 +90,16 @@
             modalID: "#create-modal"
           });
 
-        $(".edit-expense").modalForm({
-            formURL: "{% url 'tracker_row_edit' %}",
-            modalID: "#edit-modal"
-        });
 
-      });
+        $(".edit-expense").each(function () {
+              $(this).modalForm({
+                formURL: $(this).data("form-url"),
+                modalID: "#edit-modal"
+              });
+            });
+
+    });
+
     </script>
 
     <script>
@@ -170,7 +179,6 @@
            }
         }
     </script>
-
     {% endblock extrascripts %}
 
 </body>
