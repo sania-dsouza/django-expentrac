@@ -66,7 +66,7 @@
                     <td>{{ tracker.notes }}</td>
                     <td>3.90</td>
                     <td> <a class="tracker_controls1" id="c"><i class="fa fa-pencil edit-expense " title="Edit" data-form-url="{% url 'tracker_row_edit' tracker.id %}"></i></a></td>
-                    <td> <a class="tracker_controls2" id="d"><i class="fa fa-times del-expense" title="Delete"></i></a></td>
+                    <td> <a href="{% url 'tracker_row_delete' id=tracker.id %}" class="tracker_controls2" id="d"><i class="fa fa-times del-expense" title="Delete"></i></a></td>
                 </tr>
             {% endfor %}
             <tr id="no_records" style="display: none;">
@@ -78,10 +78,6 @@
     {% endblock content %}
 
     {% block extrascripts %}
-
-    <script>
-
-    </script>
 
     <script type="text/javascript">
     $(function () {
@@ -98,14 +94,11 @@
               });
             });
 
-    });
-
-    </script>
-
-    <script>
-        $('.del-expense').on('click', function() {
+        $('.de-expense').on('click', function() {
             return confirm("Are you sure you want to delete this expense?");
         });
+    });
+
     </script>
 
     <script>

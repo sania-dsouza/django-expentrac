@@ -152,14 +152,24 @@ def edit_expense_entry(request, id):
             e.save()
             # print("Submitting form for exp entry")
             return HttpResponseRedirect(reverse('tracker', args=(user.username,)))
-        # else:
-        #     user = request.user
-        #     return HttpResponseRedirect(reverse('tracker', args=(user.username,)))
+        else:
+            user = request.user
+            return HttpResponseRedirect(reverse('tracker', args=(user.username,)))
     else:
         pass
         # form = TrackerRowForm(instance=current_exp)
 
     return render(request, 'tracker/tracker_row_edit.html', variables)
+
+
+@login_required()
+def delete_expense_entry(request, id):
+    current_exp = Expense.objects.get(pk=id)
+    user = request.user
+    e = Expense.objects.get(pk=id)
+    time.sleep(2)
+    e.delete()
+    return HttpResponseRedirect(reverse('tracker', args=(user.username,)))
 
 
 @login_required()

@@ -11,6 +11,7 @@ urlpatterns = [
     # path('tracker', views.tracker_page, name='tracker'),
     path('create/', views.create_expense_entry, name='tracker_row_create'),
     path('edit/<int:id>', views.edit_expense_entry, name='tracker_row_edit'),
+    path('delete/<int:id>', views.delete_expense_entry, name='tracker_row_delete'),
     path('logout/', views.logout_view, name='logout_view'),
 ]
 
