@@ -80,11 +80,18 @@ def tracker_page(request, username):
     month_year = []
     categories = [verb_cat for code, verb_cat in Expense.CATEGORY_CHOICES]
     data = Expense.objects.filter(user=User.objects.get(username=username))
-    for exp_item in data:  # get the month and year of each exp item and append to the list
+    for exp_item in data:  # get the month and year of each exp item and append to the list for the filters
         m = get_month(exp_item.date)
         y = get_year(exp_item.date)
         month_year.append(str(m)+" "+str(y))
     month_year = set(month_year)  # remove duplicates
+
+    # code to calculate the total expense after each row of expense
+    initial = 0
+    for exp_item in data:
+        total_after_exp = initial + exp_item.amount
+        initial = initial + exp_item.amount
+        exp_item.total_after_expense = total_after_exp   # adding another attribute to the object : total_after_expense
 
     if request.user.username == username:   # if the user changes the URL unwittingly or otherwise to that of another user, the page would require a login
         return shortcuts.render(request, 'tracker/trackerTable.html', {'categories': categories, 'month_year': month_year, 'object_list': data})
