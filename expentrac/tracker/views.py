@@ -130,7 +130,6 @@ def edit_expense_entry(request, id):
     current_exp = Expense.objects.get(pk=id)
     variables = {'form': TrackerRowForm(instance=current_exp)}
     # return render(request, 'tracker/tracker_row_edit.html', variables)
-
     if request.method == "POST":
         form = TrackerRowForm(request.POST)
         if form.is_valid():
