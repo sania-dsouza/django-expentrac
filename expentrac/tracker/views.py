@@ -129,23 +129,33 @@ class TrackerRowEdit(BSModalCreateView):
 def edit_expense_entry(request, id):
     current_exp = Expense.objects.get(pk=id)
     variables = {'form': TrackerRowForm(instance=current_exp)}
+    # return render(request, 'tracker/tracker_row_edit.html', variables)
+
+    if request.method == "POST":
+        form = TrackerRowForm(request.POST)
+        if form.is_valid():
+            user = request.user   # get the user authenticated currently and mark expense against that user
+            date = request.POST['date']
+            item = request.POST['item']
+            category = request.POST['category']
+            amount = request.POST['amount']
+            notes = request.POST['notes']
+            e = Expense.objects.get(pk=id)
+            e.user = user
+            e.date = date
+            e.item = item
+            e.category = category
+            e.amount = amount
+            e.notes = notes
+            e.save()
+            # print("Submitting form for exp entry")
+            return HttpResponseRedirect(reverse('tracker', args=(user.username,)))
+    else:
+        pass
+        #form = TrackerRowForm(instance=current_exp)
+
     return render(request, 'tracker/tracker_row_edit.html', variables)
-    # if request.method == "POST":
-    #     form = TrackerRowForm(request.POST)
-    #     if form.is_valid():
-    #         user = request.user   # get the user authenticated currently and mark expense against that user
-    #         date = request.POST['date']
-    #         item = request.POST['item']
-    #         category = request.POST['category']
-    #         amount = request.POST['amount']
-    #         notes = request.POST['notes']
-    #         Expense.objects.get_or_create(user=user, date=date, item=item, category=category, amount=amount, notes=notes)
-    #         # print("Submitting form for exp entry")
-    #         return HttpResponseRedirect(reverse('tracker', args=(user.username,)))
-    # else:
-    #     form = TrackerRowForm()
-    #
-    # return render(request, 'tracker/tracker_row_edit.html', {'form': form})
+
 
 @login_required()
 def logout_view(request):
