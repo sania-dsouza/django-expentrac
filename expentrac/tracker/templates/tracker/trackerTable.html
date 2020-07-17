@@ -64,7 +64,7 @@
                     <td>{{ tracker.category }}</td>
                     <td>{{ tracker.amount }}</td>
                     <td>{{ tracker.notes }}</td>
-                    <td>{{ tracker.total_after_expense }}</td>
+                    <td style="color: green;"><strong>{{ tracker.total_after_expense }}</strong></td>
                     <td> <a class="tracker_controls1" id="c"><i class="fa fa-pencil edit-expense " title="Edit" data-form-url="{% url 'tracker_row_edit' tracker.id %}"></i></a></td>
                     <td> <a href="{% url 'tracker_row_delete' id=tracker.id %}" class="tracker_controls2" id="d"><i class="fa fa-times del-expense" title="Delete"></i></a></td>
                 </tr>
