@@ -40,7 +40,7 @@ class TrackerRowForm(BSModalModelForm):
         model = Expense
         fields = ['date', 'item', 'category', 'amount', 'notes']
         widgets = {
-            'date': DateInput(format='%m/%d/%Y', attrs={'type': 'date'}),
+            'date': DateInput(format='%Y-%m-%d', attrs={'type': 'date'}),
         }
 
 
