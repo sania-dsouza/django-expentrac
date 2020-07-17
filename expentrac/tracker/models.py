@@ -26,7 +26,7 @@ class Expense(models.Model):
         ("Education", "Education"),
         ("Miscellaneous", "Miscellaneous"),
     ]
-    date = models.DateField('Date of expense', blank=True, null=True)   # saved in format yyyy-mm-dd
+    date = models.DateField('Date of expense', null=True)   # saved in format yyyy-mm-dd
     item = models.CharField(max_length=100, null=False, blank=False)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, null=True, blank=True)
     amount = models.FloatField(null=False, blank=False)

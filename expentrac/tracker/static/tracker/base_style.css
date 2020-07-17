@@ -153,9 +153,7 @@ div.filt_container {
     background-color: white;
 }
 
-.form-group input {
-    cursor: pointer;
-}
+
 
 .month {
     float: left;
@@ -175,7 +173,9 @@ table tr#no_records {
     color: gray;x
 }
 
-
+.form-group input {
+    cursor: pointer;
+}
 
 a{
     color: black;
