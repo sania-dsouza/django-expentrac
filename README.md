@@ -27,4 +27,9 @@ Things to implement for the future:
   6) Ability to add custom category 
   
 To run the project: 
-  1) 
+  1) Start a virtual environment (venv) after cloning the repo 
+  2) Do a 'pip install' to install the dependencies of the requirements.txt
+  3) Once that is done, run project using 'python manage.py runserver'
+  4) Default port is 3000. See the project running on http://localhost:3000.
+  
+  
