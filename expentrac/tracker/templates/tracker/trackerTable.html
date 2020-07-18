@@ -71,7 +71,7 @@
                 </tr>
             {% endfor %}
             <tr id="no_records" style="display: none;">
-                <td colspan="9"> <strong> No records found </strong></td>
+                <td colspan="7"> <strong> No records found </strong></td>
             </tr>
       </tbody>
     </table>
@@ -113,7 +113,7 @@
           el = document.getElementById("no_records");
           for (i = 0; i < tr.length; i++) {
             //if (tr[i] in input1) { continue; }
-            td = tr[i].getElementsByTagName("td")[2];
+            td = tr[i].getElementsByTagName("td")[3];
             if (td) {
                 if (filter == "ALL EXPENSES") {   // With no filter applied
                     el.style.display = "none";
@@ -148,8 +148,7 @@
           tr = table.getElementsByTagName("tr");
           el = document.getElementById("no_records");
           for (i = 0; i < tr.length; i++) {
-            //if (tr[i] in input2) { continue; }
-            td = tr[i].getElementsByTagName("td")[0];
+            td = tr[i].getElementsByTagName("td")[1];
             if (td) {
                 if (filter == "All") {   // With no filter applied
                     tr[i].style.display = "";
