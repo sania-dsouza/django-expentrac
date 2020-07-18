@@ -21,6 +21,10 @@
   padding: 20px 10px 24px;
 }
 
+@media screen and (max-width: 768px) {
+    #primary { width:100%; }
+}
+
 .logo_div {
     text-align: center;
 }
