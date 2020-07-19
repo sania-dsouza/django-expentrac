@@ -27,5 +27,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        export DJANGO_SETTINGS_MODULE = expentrac.settings
-        pytest
+        python -m pytest
